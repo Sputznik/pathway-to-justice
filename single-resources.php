@@ -12,15 +12,23 @@
           Added by <?php _e( ucwords( get_the_author_meta( 'display_name' ) ) ); ?> on <?php echo get_the_date('M jS Y');?>
         </p>
         <div class="categories">
-          Categorized as <?php the_category(', ')?> | Tagged under <?php the_tags( '', ', ', '' ); ?>
+          <?php
+            $resource_category = getResourceTerms( get_the_ID(), 'resource-category' );
+            $resource_tag = getResourceTerms( get_the_ID(), 'resource-tag' );
+          ?>
+          Categorized as <?php echo implode( ', ', $resource_category );?> | Tagged under <?php echo implode( ', ', $resource_tag );?>
         </div>
         <div class="content">
           <p><strong>Resource description:</strong></p>
           <?php the_content(); ?>
         </div>
         <div class="other-links">
-        <a href="<?php _e( $external_link );?>" class="external">External Link</a>
-        <a href="<?php _e( $media_link );?>" class="media">Download as PDF</a>
+        <?php if( !empty( $external_link ) ): ?>
+          <a href="<?php _e( $external_link );?>" class="external">External Link</a>
+        <?php endif;?>
+        <?php if( !empty( $media_link ) ): ?>
+          <a href="<?php _e( $media_link );?>" class="media">Download as PDF</a>
+        <?php endif;?>
         </div>
         <!-- <div style="clear: both"></div> -->
       <?php endwhile; endif; ?>

@@ -19,3 +19,17 @@ add_action( 'widgets_init', function(){
     'after_title' 	=> '</h3>',
   ) );
 });
+
+// Returns taxonomy terms attached to a resource-post
+function getResourceTerms( $post_id, $taxonomy ){
+  // name,link
+  $term_list = wp_get_post_terms( $post_id, $taxonomy );
+  $final_terms = array();
+
+  // Iterate through each terms
+  foreach( $term_list as $term ){
+    array_push( $final_terms, "<a href='".get_term_link( $term )."'>" . $term->name . "</a>" );
+  }
+
+  return $final_terms;
+}

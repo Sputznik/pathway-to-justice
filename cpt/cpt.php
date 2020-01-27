@@ -12,7 +12,7 @@ add_filter( 'orbit_post_type_vars', function( $orbit_types ){
       'add_new_item'  => 'Add New Resource',
       'all_items'     =>  'All Resources',
 		),
-		'taxonomies'		=> array( 'category', 'post_tag' ),
+		// 'taxonomies'		=> array( 'category', 'post_tag' ),
 		'public'		=> true,
 		'supports'	=> array( 'title', 'editor','thumbnail' )
 	);
@@ -41,21 +41,21 @@ add_filter( 'orbit_meta_box_vars', function( $meta_box ){
 });
 
 /* PUSH INTO THE GLOBAL VARS OF ORBIT TAXNOMIES */
-// add_filter( 'orbit_taxonomy_vars', function( $orbit_tax ){
-//
-//   $resources_taxonomies = array(
-//     'locations'       => 'Locations',
-//     'services'        => 'Services'
-//   );
-//
-//   foreach( $resources_taxonomies as $slug => $label ){
-//     $orbit_tax[ $slug ]	= array(
-//       'label'			  => $label,
-//       'slug' 			  => $slug,
-//       'post_types'	=> array( 'resources' )
-//     );
-//   }
-//
-//   return $orbit_tax;
-//
-// } );
+add_filter( 'orbit_taxonomy_vars', function( $orbit_tax ){
+
+  $resources_taxonomies = array(
+    'resource-category'       => 'Resource Category',
+    'resource-tag'        => 'Resource Tag'
+  );
+
+  foreach( $resources_taxonomies as $slug => $label ){
+    $orbit_tax[ $slug ]	= array(
+      'label'			  => $label,
+      'slug' 			  => $slug,
+      'post_types'	=> array( 'resources' )
+    );
+  }
+
+  return $orbit_tax;
+
+} );
