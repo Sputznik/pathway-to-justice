@@ -20,7 +20,7 @@ add_action( 'widgets_init', function(){
   ) );
 });
 
-// Returns taxonomy terms attached to a resource-post
+// Returns taxonomy terms attached to resource-posts
 function getResourceTerms( $post_id, $taxonomy ){
   // name,link
   $term_list = wp_get_post_terms( $post_id, $taxonomy );
@@ -33,3 +33,25 @@ function getResourceTerms( $post_id, $taxonomy ){
 
   return $final_terms;
 }
+
+//Excerpt
+function excerpt( $limit ) {
+
+	global $post;
+
+	$excerpt = $post->post_excerpt;
+
+	if( !$excerpt && !strlen( $excerpt ) ){
+
+    $excerpt = $post->post_content;
+		$excerpt = strip_shortcodes( $excerpt );
+		$excerpt = excerpt_remove_blocks( $excerpt );
+		$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+
+	}
+
+	$excerpt = wp_trim_words( $excerpt, $limit, '...' );
+
+	return $excerpt;
+}
+//Excerpt

@@ -11,13 +11,7 @@
         <p class="author-name">
           Added by <?php _e( ucwords( get_the_author_meta( 'display_name' ) ) ); ?> on <?php echo get_the_date('M jS Y');?>
         </p>
-        <div class="categories">
-          <?php
-            $resource_category = getResourceTerms( get_the_ID(), 'resource-category' );
-            $resource_tag = getResourceTerms( get_the_ID(), 'resource-tag' );
-          ?>
-          Categorized as <?php echo implode( ', ', $resource_category );?> | Tagged under <?php echo implode( ', ', $resource_tag );?>
-        </div>
+        <?php get_template_part( "partials/content", "categories" );?>
         <div class="content">
           <p><strong>Resource description:</strong></p>
           <?php the_content(); ?>
