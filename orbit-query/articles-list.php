@@ -8,7 +8,7 @@
       </a>
     </div>
     <?php else:?>
-    <div class='orbit-post-image'>
+    <div class='orbit-post-image v-center'>
       <a href="<?php the_permalink();?>">
         <img src="<?php echo get_stylesheet_directory_uri().'/assets/images/default-image.png';?>" alt="<?php the_title(); ?>" />
       </a>
