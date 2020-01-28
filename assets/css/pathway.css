@@ -104,9 +104,50 @@ body.archive ul.list-articles li.orbit-article .categories{ margin-bottom: 10px;
   ul.list-articles .v-center a{ position: absolute;top:50%;left: 50%; transform: translate(-50%,-50%);}
   /* Articles List */
 }
+@media( max-width: 768px ){
+	/*Navbar*/
+  .navbar-toggle{
+  	margin-right: 6px;
+  }
+	.navbar-toggle .icon-bar{
+		background-color: #000;
+	}
+	.navbar .navbar-right {
+    background: #000;
+    color: #fff;
+	}
+	.navbar .nav>li.active,
+	.navbar .dropdown-menu > li.active a{
+		font-weight: 600 !important;
+	}
+	.nav>li>a:focus,
+  .nav>li>a:hover,
+	.dropdown-menu>li>a:focus,
+	.dropdown-menu>li>a:hover,
+	.dropdown-menu>.active>a,
+	.dropdown-menu>.active>a:focus,
+	.dropdown-menu>.active>a:hover{
+  	text-decoration: none;
+  	background-color: transparent;
+	}
+  .navbar-brand{ padding-top: 11px; }
+  .navbar-brand > img.visible-xs{ max-width: 130px; }
+  .navbar-right{ margin-top: 0; }
+  .navbar{ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }
+  /*Navbar*/
+}
 @media( max-width: 767px ){
   .single-resources .other-links a{ display: inline-block; }
   ul.list-articles li.orbit-article .orbit-post-image img{
     max-width: 18%;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 768px){
+  /*Navbar styles for 768px only*/
+  .navbar>.container .navbar-brand{ margin-left: -5px; }
+  .navbar-brand > img.desktop-logo{ max-width: 150px; }
+  #bs-example-navbar-collapse-1{
+  	padding-left: 0;
+    padding-right: 0;
   }
 }
