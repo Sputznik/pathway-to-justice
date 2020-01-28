@@ -16,6 +16,9 @@
     <?php endif;?>
     <div class='orbit-post-desc'>
       <h4><a href="<?php the_permalink();?>"><?php the_title();?></a></h4>
+      <?php if( is_post_type_archive( 'resources') ){
+        echo 'hello world';
+      }?>
       <?php get_template_part( "partials/content", "categories" );?>
     </div>
   </li>
